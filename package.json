@@ -1,0 +1,56 @@
+{
+  "name": "sou-h5-tempalte",
+  "version": "2.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --mode development --open",
+    "test": "vue-cli-service build --mode test",
+    "build": "vue-cli-service build --mode production --modern",
+    "lint": "vue-cli-service lint",
+    "fix": "vue-cli-service lint --fix",
+    "commit": "npx git-cz",
+    "inspect": "vue-cli-service inspect"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^2.6.11",
+    "nprogress": "^0.2.0",
+    "vant": "^2.5.3",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6",
+    "vuex": "^3.1.2",
+    "vuex-persistedstate": "^2.7.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@vue/cli-plugin-babel": "^3.12.1",
+    "@vue/cli-plugin-eslint": "^3.12.1",
+    "@vue/cli-service": "^3.12.1",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "husky": "^3.1.0",
+    "less": "^3.11.1",
+    "less-loader": "^4.1.0",
+    "lib-flexible": "^0.3.2",
+    "postcss-pxtorem": "^4.0.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
