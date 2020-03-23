@@ -2,7 +2,7 @@
   <h1
     :style="{color: '#333', fontSize: '16px', textAlign: 'center', margin: '20px 0'}"
   >
-    嗖嗖H5模版
+    sou template-h5-vue
   </h1>
 </template>
 
