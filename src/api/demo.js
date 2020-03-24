@@ -17,7 +17,7 @@ const demo = {
     })
   },
   demoPost (params) {
-    return axios.post(`Sougive/Index/give_banner_list`, params)
+    return axios.post(`Soustore/AppletStore/get_index_type`, params)
   }
 }
 

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import wxshare from 'utils/wxshare'
 import mixins from 'utils/mixins.js'
 export default {
   name: 'App',
@@ -13,14 +12,14 @@ export default {
   components: {},
   props: {},
   data () {
-    return {
-
-    }
+    return {}
   },
   computed: {},
   watch: {},
   created () {},
-  mounted () {},
+  mounted () {
+    this.axiosDemo()
+  },
   destroyed () {},
   methods: {
     /**
@@ -31,34 +30,17 @@ export default {
      * @author: Frank
      */
     axiosDemo () {
-      this.$api.demo.demoPost({
-        user_token: '2568ca5ac599c6eedeff29814d68d506',
-        lite_id: 'SGM1T2dXaGkzcUE9',
-        ald_media_id: '',
-        ald_link_key: ''
-      })
-        .then((response) => {
+      this.$api.demo
+        .demoPost({
+          http_request_type: 1,
+          fans_token: '13143jb8stl3ou686qhvv40h2vjdcf3'
+        })
+        .then(response => {
           console.log(response.data)
         })
-        .catch((response) => {
+        .catch(response => {
           console.log(response.data)
         })
-    },
-    /**
-     * @func:
-     * @desc: 微信分享
-     * @param {type}
-     * @return:
-     * @author: Frank
-     */
-    wxShareConfig () {
-      wxshare({
-        url: window.location.href,
-        title: '分享标题',
-        desc: '分享描述',
-        link: window.location.href,
-        imgUrl: process.env.VUE_APP_OSS + 'h5/wx-share/logo.png'
-      })
     },
     /**
      * @func:

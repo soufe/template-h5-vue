@@ -4,6 +4,8 @@ import api from './api'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+import client from 'utils/client'
+import wxshare from 'utils/wxshare'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { Toast } from 'vant'
@@ -27,6 +29,34 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to, from) => {
   NProgress.done()
+  let device = client()
+  if (device.system.isWx) {
+    let authUrl =
+      `${window.location.origin}` +
+      process.env.BASE_URL +
+      `${to.fullPath.toString().substr(1)}`
+    let { allowShare } = to.meta
+    let { shareTitle } = to.meta
+    let { shareDesc } = to.meta
+    let { shareImgUrl } = to.meta
+    if (device.system.isIos) {
+      if (window.entryUrl === '' || window.entryUrl === undefined) {
+        window.entryUrl = authUrl
+      }
+      wxshare(authUrl, 'ios', allowShare, shareTitle, shareDesc, shareImgUrl)
+    } else {
+      setTimeout(function () {
+        wxshare(
+          authUrl,
+          'android',
+          allowShare,
+          shareTitle,
+          shareDesc,
+          shareImgUrl
+        )
+      }, 500)
+    }
+  }
 })
 
 Vue.config.productionTip = false
