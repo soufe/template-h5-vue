@@ -31,14 +31,13 @@ router.afterEach((to, from) => {
   NProgress.done()
   let device = client()
   if (device.system.isWx) {
+    // ios 路由 => this.$router.push({ path: '/index', query: { a: 1, b: 2 } })
+    // android 路由 => window.location.href = 'https://web.sousoushenbian.cn/h5-template/index?a=1&b=2'
     let authUrl =
       `${window.location.origin}` +
       process.env.BASE_URL +
       `${to.fullPath.toString().substr(1)}`
-    let { allowShare } = to.meta
-    let { shareTitle } = to.meta
-    let { shareDesc } = to.meta
-    let { shareImgUrl } = to.meta
+    let { allowShare, shareTitle, shareDesc, shareImgUrl } = to.meta
     if (device.system.isIos) {
       if (window.entryUrl === '' || window.entryUrl === undefined) {
         window.entryUrl = authUrl

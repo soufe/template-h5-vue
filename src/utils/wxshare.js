@@ -29,14 +29,14 @@ export default function wxshare (
         jsApiList: [
           // 必填，需要使用的JS接口列表
           'checkJsApi',
-          'onMenuShareTimeline',
-          'onMenuShareAppMessage',
-          'hideAllNonBaseMenuItem'
+          'hideAllNonBaseMenuItem',
+          'updateTimelineShareData',
+          'updateAppMessageShareData'
         ]
       })
       wx.ready(function () {
         // 分享给朋友
-        wx.onMenuShareAppMessage({
+        wx.updateAppMessageShareData({
           title: shareConfig.title, // 分享标题
           desc: shareConfig.desc, // 分享描述
           link: shareConfig.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -47,7 +47,7 @@ export default function wxshare (
           }
         })
         // 分享到朋友圈
-        wx.onMenuShareTimeline({
+        wx.updateTimelineShareData({
           title: shareConfig.title, // 分享标题
           link: shareConfig.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
           imgUrl: shareConfig.imgUrl, // 分享图标
