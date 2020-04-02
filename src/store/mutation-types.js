@@ -1,1 +1,2 @@
 export const MUTATION_EXAMPLE = 'MUTATION_EXAMPLE'
+export const ENTRY_URL = 'ENTRY_URL'

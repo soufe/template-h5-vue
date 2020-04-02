@@ -1,33 +1,26 @@
+import wx from 'soufe-jssdk'
 import axios from '../request/http'
-export default function wxshare (
-  authUrl,
-  device,
-  allowShare,
-  shareTitle,
-  shareDesc,
-  shareImg
-) {
-  const shareConfig = {
-    title: shareTitle,
-    desc: shareDesc,
-    link: allowShare ? authUrl : window.location.origin,
-    imgUrl: process.env.VUE_APP_OSS + shareImg
-  }
+import store from '../store'
+import client from 'utils/client'
+export default function wxshare (param) {
+  const { isIos } = client().system
+  const { hide, title, desc, imgUrl } = param
+  const { entryUrl } = store.state
+  const authUrl = window.location.href
   axios
     .wx(`Sougroup/Public/getJsSdkByUrl`, {
       type: 1,
-      url: encodeURIComponent(device === 'ios' ? window.entryUrl : authUrl)
+      url: encodeURIComponent(isIos ? entryUrl : authUrl)
     })
     .then(response => {
       // console.log(response.data)
       wx.config({
         debug: false,
-        appId: response.data.appId, // 必填，公众号的唯一标识
-        timestamp: response.data.timestamp, // 必填，生成签名的时间戳
-        nonceStr: response.data.nonceStr, // 必填，生成签名的随机串
-        signature: response.data.signature, // 必填，签名
+        appId: response.data.appId,
+        timestamp: response.data.timestamp,
+        nonceStr: response.data.nonceStr,
+        signature: response.data.signature,
         jsApiList: [
-          // 必填，需要使用的JS接口列表
           'checkJsApi',
           'hideAllNonBaseMenuItem',
           'updateTimelineShareData',
@@ -37,26 +30,24 @@ export default function wxshare (
       wx.ready(function () {
         // 分享给朋友
         wx.updateAppMessageShareData({
-          title: shareConfig.title, // 分享标题
-          desc: shareConfig.desc, // 分享描述
-          link: shareConfig.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: shareConfig.imgUrl, // 分享图标
+          title: title,
+          desc: desc,
+          link: authUrl,
+          imgUrl: imgUrl,
           success: function (res) {
-            // 设置成功
-            console.log('分享到朋友圈成功返回的信息为:', res)
+            // console.log('分享到朋友圈成功返回的信息为:', res)
           }
         })
         // 分享到朋友圈
         wx.updateTimelineShareData({
-          title: shareConfig.title, // 分享标题
-          link: shareConfig.link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: shareConfig.imgUrl, // 分享图标
+          title: title,
+          link: authUrl,
+          imgUrl: imgUrl,
           success: function (res) {
-            // 设置成功
-            console.log('分享到朋友圈成功返回的信息为:', res)
+            // console.log('分享到朋友圈成功返回的信息为:', res)
           }
         })
-        if (!allowShare) {
+        if (hide) {
           // 隐藏所有非基础按钮接口
           wx.hideAllNonBaseMenuItem()
         }

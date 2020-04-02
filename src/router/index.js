@@ -13,33 +13,21 @@ export default new Router({
       path: '/',
       redirect: '/index',
       meta: {
-        title: '嗖嗖身边',
-        allowShare: false,
-        shareTitle: '',
-        shareDesc: '',
-        shareImgUrl: ''
+        title: '嗖嗖身边'
       }
     },
     {
       path: '/index',
       component: Index,
       meta: {
-        title: '嗖嗖身边',
-        allowShare: true, // 是否开启分享
-        shareTitle: '分享标题',
-        shareDesc: '分享描述',
-        shareImgUrl: 'h5/wx-share/logo.png'
+        title: '嗖嗖身边'
       }
     },
     {
       path: '*',
       redirect: '/index',
       meta: {
-        title: '嗖嗖身边',
-        allowShare: false,
-        shareTitle: '',
-        shareDesc: '',
-        shareImgUrl: ''
+        title: '嗖嗖身边'
       }
     }
   ],

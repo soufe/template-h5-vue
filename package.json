@@ -1,6 +1,6 @@
 {
   "name": "sou-h5-tempalte",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode development --open",
@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "core-js": "^2.6.11",
     "nprogress": "^0.2.0",
+    "soufe-jssdk": "^1.2.0",
     "vant": "^2.5.3",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",

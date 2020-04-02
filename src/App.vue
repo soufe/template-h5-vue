@@ -64,7 +64,7 @@ export default {
     },
     /**
      * @func:
-     * @desc: 配置小程序分享
+     * @desc: 小程序分享
      * @param {type}
      * @return:
      * @author: Frank

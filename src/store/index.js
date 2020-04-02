@@ -8,7 +8,8 @@ import persistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const state = {
-  token: ''
+  token: '',
+  entryUrl: ''
 }
 
 export default new Vuex.Store({
