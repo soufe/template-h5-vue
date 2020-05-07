@@ -35,10 +35,10 @@ export default {
           http_request_type: 1,
           fans_token: '13143jb8stl3ou686qhvv40h2vjdcf3'
         })
-        .then(response => {
+        .then((response) => {
           console.log(response.data)
         })
-        .catch(response => {
+        .catch((response) => {
           console.log(response.data)
         })
     },

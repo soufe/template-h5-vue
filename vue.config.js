@@ -1,5 +1,5 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-let path = require('path')
+const path = require('path')
 function resolve (dir) {
   return path.join(__dirname, dir)
 }

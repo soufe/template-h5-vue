@@ -8,7 +8,7 @@ export default function wxshare (param) {
   const { entryUrl } = store.state
   const authUrl = window.location.href
   axios
-    .wx(`Sougroup/Public/getJsSdkByUrl`, {
+    .wx('Sougroup/Public/getJsSdkByUrl', {
       type: 1,
       url: encodeURIComponent(isIos ? entryUrl : authUrl)
     })

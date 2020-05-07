@@ -4,10 +4,10 @@
       color: '#333',
       fontSize: '16px',
       textAlign: 'center',
-      margin: '20px 0'
+      margin: '20px 0',
     }"
   >
-    sfe template-h5-vue
+    sfe tmpl-h5-vue
   </h1>
 </template>
 
@@ -33,11 +33,10 @@ export default {
      * @author: Frank
      */
     this.getUrl()
-      .then(value => {
-        // console.log(value)
+      .then((value) => {
         this.wxConfig()
       })
-      .catch(Error => {
+      .catch((Error) => {
         console.log(Error)
       })
   },
@@ -52,9 +51,9 @@ export default {
      */
     getUrl () {
       return new Promise((resolve, reject) => {
-        const fullPath = `https://web.sousoushenbian.cn${process.env.BASE_URL}${
-          this.$route.fullPath.split('#')[0].substr(1)
-        }`
+        const fullPath = `https://web.sousoushenbian.cn${
+          process.env.BASE_URL
+        }${this.$route.fullPath.split('#')[0].substr(1)}`
         if (fullPath) {
           this.$store.commit({
             type: 'ENTRY_URL',

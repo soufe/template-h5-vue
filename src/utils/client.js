@@ -1,6 +1,6 @@
 export default function client () {
   // 呈现引擎
-  var engine = {
+  const engine = {
     ie: 0,
     gecko: 0,
     webkit: 0,
@@ -11,7 +11,7 @@ export default function client () {
     ver: null
   }
   // 浏览器
-  var browser = {
+  const browser = {
     // 主要浏览器
     ie: 0,
     firefox: 0,
@@ -24,7 +24,7 @@ export default function client () {
     ver: null
   }
   // 平台、设备和操作系统
-  var system = {
+  const system = {
     win: false,
     mac: false,
     x11: false,
@@ -44,24 +44,24 @@ export default function client () {
   }
 
   // 检测呈现引擎和浏览器
-  var ua = navigator.userAgent
+  const ua = navigator.userAgent
   if (window.opera) {
     engine.ver = browser.ver = window.opera.version()
     engine.opera = browser.opera = parseFloat(engine.ver)
   } else if (/AppleWebKit\/(\S+)/.test(ua)) {
-    engine.ver = RegExp['$1']
+    engine.ver = RegExp.$1
     engine.webkit = parseFloat(engine.ver)
 
     // 确定是 Chrome 还是 Safari
     if (/Chrome\/(\S+)/.test(ua)) {
-      browser.ver = RegExp['$1']
+      browser.ver = RegExp.$1
       browser.chrome = parseFloat(browser.ver)
     } else if (/Version\/(\S+)/.test(ua)) {
-      browser.ver = RegExp['$1']
+      browser.ver = RegExp.$1
       browser.safari = parseFloat(browser.ver)
     } else {
       // 近似地确定版本号
-      var safariVersion = 1
+      let safariVersion = 1
       if (engine.webkit < 100) {
         safariVersion = 1
       } else if (engine.webkit < 312) {
@@ -75,35 +75,35 @@ export default function client () {
       browser.safari = browser.ver = safariVersion
     }
   } else if (/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;]+)/.test(ua)) {
-    engine.ver = browser.ver = RegExp['$1']
+    engine.ver = browser.ver = RegExp.$1
     engine.khtml = browser.konq = parseFloat(engine.ver)
   // eslint-disable-next-line no-useless-escape
   } else if (/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)) {
-    engine.ver = RegExp['$1']
+    engine.ver = RegExp.$1
     engine.gecko = parseFloat(engine.ver)
 
     // 确定是不是 Firefox
     if (/Firefox\/(\S+)/.test(ua)) {
-      browser.ver = RegExp['$1']
+      browser.ver = RegExp.$1
       browser.firefox = parseFloat(browser.ver)
     }
   } else if (/MSIE ([^;]+)/.test(ua)) {
-    engine.ver = browser.ver = RegExp['$1']
+    engine.ver = browser.ver = RegExp.$1
     engine.ie = browser.ie = parseFloat(engine.ver)
   }
   // 检测浏览器
   browser.ie = engine.ie
   browser.opera = engine.opera
   // 检测平台
-  var p = navigator.platform
+  const p = navigator.platform
   system.win = p.indexOf('Win') === 0
   system.mac = p.indexOf('Mac') === 0
   system.x11 = p === 'X11' || p.indexOf('Linux') === 0
   // 检测 Windows 操作系统
   if (system.win) {
     if (/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.test(ua)) {
-      if (RegExp['$1'] === 'NT') {
-        switch (RegExp['$2']) {
+      if (RegExp.$1 === 'NT') {
+        switch (RegExp.$2) {
           case '5.0':
             system.win = '2000'
             break
@@ -120,10 +120,10 @@ export default function client () {
             system.win = 'NT'
             break
         }
-      } else if (RegExp['$1'] === '9x') {
+      } else if (RegExp.$1 === '9x') {
         system.win = 'ME'
       } else {
-        system.win = RegExp['$1']
+        system.win = RegExp.$1
       }
     }
   }
@@ -138,7 +138,7 @@ export default function client () {
   } else if (system.win === 'Ph') {
     if (/Windows Phone OS (\d+.\d+)/.test(ua)) {
       system.win = 'Phone'
-      system.winMobile = parseFloat(RegExp['$1'])
+      system.winMobile = parseFloat(RegExp.$1)
     }
   }
 

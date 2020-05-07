@@ -35,7 +35,7 @@ const errorHandle = (status, other) => {
  * 创建axios实例
  */
 
-let instance = axios.create({
+const instance = axios.create({
   timeout: 12000,
   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 })
@@ -70,7 +70,7 @@ instance.interceptors.response.use(
  * 当前环境
  */
 
-let baseEnv = process.env.VUE_APP_FLAG === '0' ? process.env.VUE_APP_URL_FEN : process.env.VUE_APP_URL_SOU
+const baseEnv = process.env.VUE_APP_FLAG === '0' ? process.env.VUE_APP_URL_FEN : process.env.VUE_APP_URL_SOU
 
 /**
  * 公共参数

@@ -5,7 +5,7 @@ export default {
     state
   }) {
     // let res = await getData()
-    let res = state.token
+    const res = state.token
     commit(MUTATION_EXAMPLE, res)
   }
 }

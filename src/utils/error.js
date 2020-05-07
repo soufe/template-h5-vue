@@ -18,9 +18,9 @@ const errorHandler = (error, vm, info) => {
 
 function registerActionHandle (actions) {
   Object.keys(actions).forEach(key => {
-    let fn = actions[key]
+    const fn = actions[key]
     actions[key] = function (...args) {
-      let ret = fn.apply(this, args)
+      const ret = fn.apply(this, args)
       if (isPromise(ret)) {
         return ret.catch(errorHandler)
       } else { // 默认错误处理
@@ -31,10 +31,10 @@ function registerActionHandle (actions) {
 }
 
 const registerVuex = (instance) => {
-  if (instance.$options['store']) {
-    let actions = instance.$options['store']['_actions'] || {}
+  if (instance.$options.store) {
+    const actions = instance.$options.store._actions || {}
     if (actions) {
-      let tempActions = {}
+      const tempActions = {}
       Object.keys(actions).forEach(key => {
         tempActions[key] = actions[key][0]
       })
@@ -45,14 +45,14 @@ const registerVuex = (instance) => {
 
 const registerVue = (instance) => {
   if (instance.$options.methods) {
-    let actions = instance.$options.methods || {}
+    const actions = instance.$options.methods || {}
     if (actions) {
       registerActionHandle(actions)
     }
   }
 }
 
-let GlobalError = {
+const GlobalError = {
   install: (Vue, options) => {
     /**
      * 全局异常处理

@@ -3,21 +3,26 @@ module.exports = {
   env: {
     node: true
   },
-  'extends': [
+  extends: [
     'plugin:vue/strongly-recommended',
-    '@vue/standard'
+    '@vue/standard',
+    '@vue/typescript/recommended'
   ],
+  parserOptions: {
+    ecmaVersion: 2020
+  },
   rules: {
     'no-console': 'off',
-    'no-debugger': 'off'
-  },
-  parserOptions: {
-    parser: 'babel-eslint'
+    'no-debugger': 'off',
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
   },
   globals: {
+    wx: true,
     App: true,
     Page: true,
-    wx: true,
     AlipayJSBridge: true
   }
 }

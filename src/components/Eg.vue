@@ -4,28 +4,20 @@
 
 <script>
 export default {
-  name: 'EgComponent',
+  name: 'Eg',
   mixins: [],
   components: {},
   props: {},
   data () {
-    return {
-
-    }
+    return {}
   },
   computed: {},
   watch: {},
   created () {},
-  mounted () {
-
-  },
+  mounted () {},
   destroyed () {},
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 
-<style scoped lang="less">
-
-</style>
+<style scoped lang="less"></style>
