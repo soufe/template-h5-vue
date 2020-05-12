@@ -1,8 +1,8 @@
 import wx from 'soufe-jssdk'
-import axios from '../request/http'
+import axios from '../utils/http'
 import store from '../store'
-import client from 'utils/client'
-export default function wxshare (param) {
+import client from '../utils/client'
+export default function wxshare (param: any) {
   const { isIos } = client().system
   const { hide, title, desc, imgUrl } = param
   const { entryUrl } = store.state
@@ -14,12 +14,13 @@ export default function wxshare (param) {
     })
     .then(response => {
       // console.log(response.data)
+      const _response: any = response
       wx.config({
         debug: false,
-        appId: response.data.appId,
-        timestamp: response.data.timestamp,
-        nonceStr: response.data.nonceStr,
-        signature: response.data.signature,
+        appId: _response.data.appId,
+        timestamp: _response.data.timestamp,
+        nonceStr: _response.data.nonceStr,
+        signature: _response.data.signature,
         jsApiList: [
           'checkJsApi',
           'hideAllNonBaseMenuItem',
@@ -34,8 +35,8 @@ export default function wxshare (param) {
           desc: desc,
           link: authUrl,
           imgUrl: imgUrl,
-          success: function (res) {
-            // console.log('分享到朋友圈成功返回的信息为:', res)
+          success: function (res: any) {
+            console.log('分享到朋友圈成功返回的信息为:', res)
           }
         })
         // 分享到朋友圈
@@ -43,8 +44,8 @@ export default function wxshare (param) {
           title: title,
           link: authUrl,
           imgUrl: imgUrl,
-          success: function (res) {
-            // console.log('分享到朋友圈成功返回的信息为:', res)
+          success: function (res: any) {
+            console.log('分享到朋友圈成功返回的信息为:', res)
           }
         })
         if (hide) {
@@ -52,7 +53,7 @@ export default function wxshare (param) {
           wx.hideAllNonBaseMenuItem()
         }
       })
-      wx.error(function (res) {
+      wx.error(function (res: any) {
         console.log('验证失败返回的信息:', res)
       })
     })

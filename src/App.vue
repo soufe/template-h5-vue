@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import mixins from 'utils/mixins.js'
+import mixins from 'utils/mixins'
 export default {
   name: 'App',
   mixins: [mixins],
@@ -31,7 +31,7 @@ export default {
      */
     axiosDemo () {
       this.$api.demo
-        .demoPost({
+        .post({
           http_request_type: 1,
           fans_token: '13143jb8stl3ou686qhvv40h2vjdcf3'
         })

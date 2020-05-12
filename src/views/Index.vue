@@ -4,7 +4,7 @@
       color: '#333',
       fontSize: '16px',
       textAlign: 'center',
-      margin: '20px 0',
+      margin: '20px 0'
     }"
   >
     sfe tmpl-h5-vue
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import share from 'utils/wxshare.js'
+import share from 'utils/wxshare'
 export default {
   name: 'Index',
   mixins: [],
@@ -33,10 +33,10 @@ export default {
      * @author: Frank
      */
     this.getUrl()
-      .then((value) => {
+      .then(value => {
         this.wxConfig()
       })
-      .catch((Error) => {
+      .catch(Error => {
         console.log(Error)
       })
   },

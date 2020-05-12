@@ -1,35 +1,63 @@
 export default function client () {
+  interface Engine {
+    ie: any;
+    gecko: any;
+    webkit: any;
+    khtml: any;
+    opera: any;
+    ver: any;
+  }
   // 呈现引擎
-  const engine = {
+  const engine: Engine = {
     ie: 0,
     gecko: 0,
     webkit: 0,
     khtml: 0,
     opera: 0,
-
-    // 完整的版本号
-    ver: null
+    ver: ''
+  }
+  interface Browser {
+    ie: any;
+    firefox: any;
+    safari: any;
+    konq: any;
+    opera: any;
+    chrome: any;
+    ver: any;
   }
   // 浏览器
-  const browser = {
-    // 主要浏览器
+  const browser: Browser = {
     ie: 0,
     firefox: 0,
     safari: 0,
     konq: 0,
     opera: 0,
     chrome: 0,
-
-    // 具体的版本号
-    ver: null
+    ver: ''
+  }
+  interface System {
+    win: any;
+    mac: any;
+    x11: any;
+    iphone: any;
+    ipod: any;
+    ipad: any;
+    ios: any;
+    android: any;
+    nokiaN: any;
+    winMobile: any;
+    wii: any;
+    ps: any;
+    isWx: any;
+    isAli: any;
+    isIos: any;
+    isAndroid: any;
   }
   // 平台、设备和操作系统
-  const system = {
+  const system: System = {
     win: false,
     mac: false,
     x11: false,
-
-    // 移动设备
     iphone: false,
     ipod: false,
     ipad: false,
@@ -37,18 +65,20 @@ export default function client () {
     android: false,
     nokiaN: false,
     winMobile: false,
-
-    // 游戏系统
     wii: false,
-    ps: false
+    ps: false,
+    isWx: false,
+    isAli: false,
+    isIos: false,
+    isAndroid: false
   }
-
   // 检测呈现引擎和浏览器
   const ua = navigator.userAgent
-  if (window.opera) {
-    engine.ver = browser.ver = window.opera.version()
-    engine.opera = browser.opera = parseFloat(engine.ver)
-  } else if (/AppleWebKit\/(\S+)/.test(ua)) {
+  // if (window.opera) {
+  //   engine.ver = browser.ver = window.opera.version();
+  //   engine.opera = browser.opera = parseFloat(engine.ver);
+  // } else
+  if (/AppleWebKit\/(\S+)/.test(ua)) {
     engine.ver = RegExp.$1
     engine.webkit = parseFloat(engine.ver)
 
@@ -77,7 +107,7 @@ export default function client () {
   } else if (/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;]+)/.test(ua)) {
     engine.ver = browser.ver = RegExp.$1
     engine.khtml = browser.konq = parseFloat(engine.ver)
-  // eslint-disable-next-line no-useless-escape
+    // eslint-disable-next-line no-useless-escape
   } else if (/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)) {
     engine.ver = RegExp.$1
     engine.gecko = parseFloat(engine.ver)

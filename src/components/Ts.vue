@@ -11,6 +11,4 @@ export default class Ts extends Vue {
 }
 </script>
 
-<style scoped lang="less">
-
-</style>
+<style scoped lang="less"></style>

@@ -5,21 +5,21 @@
  * @param {*} vm
  */
 
-function isPromise (ret) {
+function isPromise (ret: any) {
   return (ret && typeof ret.then === 'function' && typeof ret.catch === 'function')
 }
 
-const errorHandler = (error, vm, info) => {
+const errorHandler = (error: any, vm: any, info: any) => {
   console.error('抛出全局异常')
   console.error(vm)
   console.error(error)
   console.error(info)
 }
 
-function registerActionHandle (actions) {
+function registerActionHandle (actions: any) {
   Object.keys(actions).forEach(key => {
     const fn = actions[key]
-    actions[key] = function (...args) {
+    actions[key] = function (...args: any) {
       const ret = fn.apply(this, args)
       if (isPromise(ret)) {
         return ret.catch(errorHandler)
@@ -30,11 +30,11 @@ function registerActionHandle (actions) {
   })
 }
 
-const registerVuex = (instance) => {
+const registerVuex = (instance: any) => {
   if (instance.$options.store) {
     const actions = instance.$options.store._actions || {}
     if (actions) {
-      const tempActions = {}
+      const tempActions: any = {}
       Object.keys(actions).forEach(key => {
         tempActions[key] = actions[key][0]
       })
@@ -43,7 +43,7 @@ const registerVuex = (instance) => {
   }
 }
 
-const registerVue = (instance) => {
+const registerVue = (instance: any) => {
   if (instance.$options.methods) {
     const actions = instance.$options.methods || {}
     if (actions) {
@@ -53,7 +53,7 @@ const registerVue = (instance) => {
 }
 
 const GlobalError = {
-  install: (Vue, options) => {
+  install: (Vue: any, options: any) => {
     /**
      * 全局异常处理
      * @param {
