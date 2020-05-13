@@ -1,7 +1,7 @@
 import qs from 'qs'
 import axios from 'axios'
+import store from '../store'
 import { Toast } from 'vant'
-// import store from '../store'
 
 const instance = axios.create({
   timeout: 12000,
@@ -20,8 +20,8 @@ const errorHandle = (status: number, other: string): void => {
 
 instance.interceptors.request.use(
   config => {
-    // const token = store.state.token
-    // token && (config.headers.Authorization = token)
+    const token = store.state.token
+    token && (config.headers.Authorization = token)
     return config
   },
   error => Promise.reject(error)
@@ -42,9 +42,9 @@ instance.interceptors.response.use(
 
 const baseEnv: string = process.env.VUE_APP_FLAG === '0' ? '/api/' : '/apis/'
 
-const baseParams: object = { client_type: 'h5' }
+const baseParams: any = { client_type: 'h5' }
 
-function get (url: string, params: object) {
+function get (url: string, params: any) {
   return new Promise((resolve, reject) => {
     instance
       .get(baseEnv + url, {
@@ -59,7 +59,7 @@ function get (url: string, params: object) {
   })
 }
 
-function post (url: string, params: object) {
+function post (url: string, params: any) {
   return new Promise((resolve, reject) => {
     instance
       .post(baseEnv + url, qs.stringify(Object.assign(baseParams, params)))
@@ -72,7 +72,7 @@ function post (url: string, params: object) {
   })
 }
 
-function wx (url: string, params: object) {
+function wx (url: string, params: any) {
   return new Promise((resolve, reject) => {
     instance
       .post(`/api/${url}`, qs.stringify(Object.assign(baseParams, params)))

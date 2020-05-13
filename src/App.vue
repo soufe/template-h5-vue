@@ -6,6 +6,7 @@
 
 <script>
 import mixins from 'utils/mixins'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'App',
   mixins: [mixins],
@@ -14,23 +15,50 @@ export default {
   data () {
     return {}
   },
-  computed: {},
+  computed: {
+    /**
+     * @desc: mapState、mapGetters
+     * @param {type}
+     * @return:
+     * @author: Frank
+     */
+    // ...mapState({
+    //   token: 'token'
+    // }),
+    // ...mapGetters({
+    //   url: 'getUrl'
+    // })
+  },
   watch: {},
   created () {},
   mounted () {
-    this.axiosDemo()
+    // console.log(this.token)
+    // console.log(this.url)
+    // this.setUrl()
+    this.axios()
   },
   destroyed () {},
   methods: {
     /**
-     * @func:
+     * @desc: mapMutations、mapActions
+     * @param {type}
+     * @return:
+     * @author: Frank
+     */
+    // ...mapMutations({
+    //   setUrl: 'ENTRY_URL'
+    // }),
+    // ...mapActions({
+    //   setUrl: 'entryUrl'
+    // }),
+    /**
      * @desc: 请求接口
      * @param {type}
      * @return:
      * @author: Frank
      */
-    axiosDemo () {
-      this.$api.demo
+    axios () {
+      this.$api.eg
         .post({
           http_request_type: 1,
           fans_token: '13143jb8stl3ou686qhvv40h2vjdcf3'
@@ -43,7 +71,6 @@ export default {
         })
     },
     /**
-     * @func:
      * @desc: 支付宝分享
      * @param {type}
      * @return:
@@ -63,7 +90,6 @@ export default {
       })
     },
     /**
-     * @func:
      * @desc: 小程序分享
      * @param {type}
      * @return:

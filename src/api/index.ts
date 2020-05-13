@@ -4,8 +4,8 @@
  * @return:
  * @author: Frank
  */
-import demo from './demo'
+import eg from './eg'
 
 export default {
-  demo
+  eg
 }

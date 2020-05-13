@@ -5,7 +5,7 @@
  * @param {*} vm
  */
 
-function isPromise (ret: any) {
+function isPromise (ret: Promise<any>) {
   return (ret && typeof ret.then === 'function' && typeof ret.catch === 'function')
 }
 
@@ -16,10 +16,10 @@ const errorHandler = (error: any, vm: any, info: any) => {
   console.error(info)
 }
 
-function registerActionHandle (actions: any) {
+function registerActionHandle (actions: { [x: string]: (...args: any) => any }) {
   Object.keys(actions).forEach(key => {
     const fn = actions[key]
-    actions[key] = function (...args: any) {
+    actions[key] = function (...args) {
       const ret = fn.apply(this, args)
       if (isPromise(ret)) {
         return ret.catch(errorHandler)

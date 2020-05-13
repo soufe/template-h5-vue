@@ -33,7 +33,8 @@ Vue.config.productionTip = false
 
 Vue.prototype.$api = api
 
-Vue.use(Error).use(Toast)
+Vue.use(Error)
+Vue.use(Toast)
 
 new Vue({
   store,

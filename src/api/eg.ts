@@ -1,20 +1,20 @@
 /**
- * @desc: demo模块接口列表
+ * @desc: eg模块接口列表
  * @param {type}
  * @return:
  * @author: Frank
  */
 import axios from '../utils/http'
 
-const Demo = {
-  get (id: number, params: object) {
+const Eg = {
+  get (id: number, params: any) {
     return axios.get(`some/${id}`, {
       params
     })
   },
-  post (id: number, params: object) {
+  post (id: number, params: any) {
     return axios.post('Soustore/AppletStore/get_index_type', params)
   }
 }
 
-export default Demo
+export default Eg

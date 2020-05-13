@@ -26,7 +26,6 @@ export default {
   created () {},
   mounted () {
     /**
-     * @func:
      * @desc: 微信分享
      * @param {type}
      * @return:
@@ -43,7 +42,6 @@ export default {
   destroyed () {},
   methods: {
     /**
-     * @func:
      * @desc: 微信分享
      * @param {type}
      * @return:

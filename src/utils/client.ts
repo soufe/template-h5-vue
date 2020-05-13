@@ -1,4 +1,5 @@
 export default function client () {
+  // 呈现引擎
   interface Engine {
     ie: any;
     gecko: any;
@@ -7,7 +8,6 @@ export default function client () {
     opera: any;
     ver: any;
   }
-  // 呈现引擎
   const engine: Engine = {
     ie: 0,
     gecko: 0,
@@ -16,6 +16,7 @@ export default function client () {
     opera: 0,
     ver: ''
   }
+  // 浏览器
   interface Browser {
     ie: any;
     firefox: any;
@@ -25,7 +26,6 @@ export default function client () {
     chrome: any;
     ver: any;
   }
-  // 浏览器
   const browser: Browser = {
     ie: 0,
     firefox: 0,
@@ -35,6 +35,7 @@ export default function client () {
     chrome: 0,
     ver: ''
   }
+  // 平台、设备和操作系统
   interface System {
     win: any;
     mac: any;
@@ -53,7 +54,6 @@ export default function client () {
     isIos: any;
     isAndroid: any;
   }
-  // 平台、设备和操作系统
   const system: System = {
     win: false,
     mac: false,

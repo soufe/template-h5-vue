@@ -1,8 +1,16 @@
-import { MUTATION_EXAMPLE } from './mutation-types'
+import { ENTRY_URL } from './mutation-types'
+
+function getData (team: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(team)
+    }, 3000)
+  })
+}
+
 export default {
-  async mutationExample (commit: any, state: any) {
-    // let res = await getData()
-    const res = state.token
-    commit(MUTATION_EXAMPLE, res)
+  async entryUrl (context: { commit: any }) {
+    const res = await getData('sfe')
+    context.commit(ENTRY_URL, res)
   }
 }

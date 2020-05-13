@@ -1,9 +1,6 @@
-import { MUTATION_EXAMPLE, ENTRY_URL } from './mutation-types'
+import { ENTRY_URL } from './mutation-types'
 export default {
-  [MUTATION_EXAMPLE] (state: any) {
-    state.token = ''
-  },
-  [ENTRY_URL] (state: any, payload: any) {
+  [ENTRY_URL] (state: { entryUrl: string }, payload: { fullPath: string }) {
     state.entryUrl = payload.fullPath
   }
 }
