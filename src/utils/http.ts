@@ -40,11 +40,25 @@ instance.interceptors.response.use(
   }
 )
 
-const baseEnv: string = process.env.VUE_APP_FLAG === '0' ? '/api/' : '/apis/'
+let baseEnv = ''
+const FLAG: string = process.env.VUE_APP_FLAG
+switch (FLAG) {
+  case '0':
+    baseEnv = '/apizsm/'
+    break
+  case '1':
+    baseEnv = '/apisou/'
+    break
+  case '2':
+    baseEnv = '/apibc/'
+    break
+  default:
+    baseEnv = ''
+}
 
 const baseParams: any = { client_type: 'h5' }
 
-function get (url: string, params: any) {
+function get (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
       .get(baseEnv + url, {
@@ -59,7 +73,7 @@ function get (url: string, params: any) {
   })
 }
 
-function post (url: string, params: any) {
+function post (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
       .post(baseEnv + url, qs.stringify(Object.assign(baseParams, params)))
@@ -72,10 +86,10 @@ function post (url: string, params: any) {
   })
 }
 
-function wx (url: string, params: any) {
+function wx (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
-      .post(`/api/${url}`, qs.stringify(Object.assign(baseParams, params)))
+      .post(`/apizsm/${url}`, qs.stringify(Object.assign(baseParams, params)))
       .then(res => {
         resolve(res.data)
       })

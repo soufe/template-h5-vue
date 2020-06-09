@@ -49,16 +49,24 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/api/': {
-        target: 'https://store.sousoushenbian.cn/',
+      '/apizsm/': {
+        target: 'https:/zsm.sousoushenbian.com/',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
           '^/api/': ' '
         }
       },
-      '/apis/': {
-        target: 'https://wxt.shangshangkeji.com/',
+      '/apisou/': {
+        target: 'https://test.sousoushenbian.com/',
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/apis/': ' '
+        }
+      },
+      '/apibc/': {
+        target: 'https://testbc.sousoushenbian.com/',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
