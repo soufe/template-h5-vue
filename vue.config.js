@@ -54,7 +54,7 @@ module.exports = {
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/api/': ' '
+          '^/apizsm/': ' '
         }
       },
       '/apisou/': {
@@ -62,7 +62,7 @@ module.exports = {
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/apis/': ' '
+          '^/apisou/': ' '
         }
       },
       '/apibc/': {
@@ -70,7 +70,7 @@ module.exports = {
         ws: true,
         changeOrigin: true,
         pathRewrite: {
-          '^/apis/': ' '
+          '^/apibc/': ' '
         }
       }
     }
