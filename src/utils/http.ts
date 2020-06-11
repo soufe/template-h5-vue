@@ -62,7 +62,7 @@ function get (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
       .get(baseEnv + url, {
-        params: Object.assign(baseParams, params)
+        params: Object.assign({}, baseParams, params)
       })
       .then(res => {
         resolve(res.data)
@@ -76,7 +76,7 @@ function get (url: string, params: any): Promise<any> {
 function post (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
-      .post(baseEnv + url, qs.stringify(Object.assign(baseParams, params)))
+      .post(baseEnv + url, qs.stringify(Object.assign({}, baseParams, params)))
       .then(res => {
         resolve(res.data)
       })
@@ -89,7 +89,7 @@ function post (url: string, params: any): Promise<any> {
 function wx (url: string, params: any): Promise<any> {
   return new Promise((resolve, reject) => {
     instance
-      .post(`/apizsm/${url}`, qs.stringify(Object.assign(baseParams, params)))
+      .post(`/apizsm/${url}`, qs.stringify(Object.assign({}, baseParams, params)))
       .then(res => {
         resolve(res.data)
       })
