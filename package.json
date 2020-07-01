@@ -1,6 +1,6 @@
 {
   "name": "tmpl-h5-vue",
-  "version": "3.0.0",
+  "version": "3.3.0",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode development --open",
