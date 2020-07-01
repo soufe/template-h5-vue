@@ -1,4 +1,4 @@
-# tmpl-h5-vue
+# tmpl-h5-vue2
 
 ## 简介
 > 移动端项目模版

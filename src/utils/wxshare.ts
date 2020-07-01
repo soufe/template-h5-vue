@@ -1,7 +1,7 @@
 import wx from 'soufe-jssdk'
-import axios from '../utils/http'
+import axios from './http'
 import store from '../store'
-import client from '../utils/client'
+import client from './client'
 export default function wxshare (param: any) {
   const { isIos } = client().system
   const { hide, title, desc, imgUrl } = param
