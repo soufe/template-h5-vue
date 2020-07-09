@@ -1,4 +1,4 @@
-import wx from 'soufe-jssdk'
+import wx from '@sousoufe/jssdk'
 import axios from './http'
 import store from '../store'
 import client from './client'
