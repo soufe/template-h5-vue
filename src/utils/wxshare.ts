@@ -8,7 +8,7 @@ export default function wxshare (param: any) {
   const { entryUrl } = store.state
   const authUrl = window.location.href
   const FLAG = process.env.VUE_APP_FLAG
-  let configUrl;
+  let configUrl
   switch (FLAG) {
     case '0':
       configUrl = 'Sougroup/Public/getJsSdkByUrl'
