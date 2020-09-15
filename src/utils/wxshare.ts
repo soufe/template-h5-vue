@@ -7,8 +7,23 @@ export default function wxshare (param: any) {
   const { hide, title, desc, imgUrl } = param
   const { entryUrl } = store.state
   const authUrl = window.location.href
+  const FLAG = process.env.VUE_APP_FLAG
+  let configUrl;
+  switch (FLAG) {
+    case '0':
+      configUrl = 'Sougroup/Public/getJsSdkByUrl'
+      break
+    case '1':
+      configUrl = 'Souweb/Wechat/getsignPackage'
+      break
+    case '2':
+      configUrl = 'Souweb/Wechat/getsignPackage'
+      break
+    default:
+      configUrl = ''
+  }
   axios
-    .wx('Sougroup/Public/getJsSdkByUrl', {
+    .post(configUrl, {
       type: 1,
       url: encodeURIComponent(isIos ? entryUrl : authUrl)
     })
@@ -23,6 +38,7 @@ export default function wxshare (param: any) {
         signature: _response.data.signature,
         jsApiList: [
           'checkJsApi',
+          'chooseWXPay',
           'hideAllNonBaseMenuItem',
           'updateTimelineShareData',
           'updateAppMessageShareData'

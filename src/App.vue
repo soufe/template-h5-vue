@@ -32,10 +32,7 @@ export default {
   watch: {},
   created () {},
   mounted () {
-    // console.log(this.token)
-    // console.log(this.url)
-    // this.setUrl()
-    this.axios()
+    // this.axios()
   },
   destroyed () {},
   methods: {

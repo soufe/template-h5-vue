@@ -12,7 +12,7 @@ const Eg = {
       params
     })
   },
-  post (id: number, params: any): Promise<any> {
+  post (params: any): Promise<any> {
     return axios.post('Soustore/AppletStore/get_index_type', params)
   }
 }

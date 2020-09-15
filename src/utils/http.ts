@@ -86,21 +86,7 @@ function post (url: string, params: any): Promise<any> {
   })
 }
 
-function wx (url: string, params: any): Promise<any> {
-  return new Promise((resolve, reject) => {
-    instance
-      .post(`/apizsm/${url}`, qs.stringify(Object.assign({}, baseParams, params)))
-      .then(res => {
-        resolve(res.data)
-      })
-      .catch(err => {
-        reject(err.data)
-      })
-  })
-}
-
 export default {
   get,
-  post,
-  wx
+  post
 }
