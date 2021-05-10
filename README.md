@@ -1,21 +1,26 @@
 # tmpl-h5-vue2
 
 ## 简介
+
 > 移动端项目模版
 
 ## 环境
-> **node** => v12.16.3
 
+> **node** => v12.16.3
+>
 > **@vue/cli** => v4.4.6
 
 ## 技术栈
->  [vue](https://cn.vuejs.org/v2/guide/) + [vuex](https://vuex.vuejs.org/zh/) + [vue-router](https://router.vuejs.org/zh/) +  [ts](https://typescript.bootcss.com) + [vant](https://vant-contrib.gitee.io/vant/#/zh-CN/)
+
+> [vue](https://cn.vuejs.org/v2/guide/) + [vuex](https://vuex.vuejs.org/zh/) + [vue-router](https://router.vuejs.org/zh/) +  [ts](https://typescript.bootcss.com) + [vant](https://vant-contrib.gitee.io/vant/#/zh-CN/)
 
 ## 约定
+
 - `详情` 参考 [语雀](https://cn.vuejs.org/v2/style-guide/) 对应说明
 
 ## 项目目录
-```
+
+```html
 ├── LICENSE
 ├── README.md
 ├── babel.config.js
@@ -61,7 +66,8 @@
 ```
 
 ## License
-```
+
+```html
 The MIT License (MIT)
 
 Copyright (c) 2019 SouFe
