@@ -6,3 +6,4 @@ declare module '*.vue' {
 declare module 'qs'
 declare module 'nprogress'
 declare module '@sousoufe/jssdk'
+declare module '@sousoufe/jsbridge'
