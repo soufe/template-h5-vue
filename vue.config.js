@@ -50,7 +50,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/apizsm/': {
-        target: 'https:/zsm.sousoushenbian.com/',
+        target: 'https://zsm.sousoushenbian.com/',
         ws: true,
         changeOrigin: true,
         pathRewrite: {
