@@ -18,8 +18,10 @@ NProgress.configure({
 })
 
 router.beforeEach((to, from, next) => {
-  if (document.title !== to.meta.title) {
-    document.title = to.meta.title
+  if (to && to.meta && to.meta.title) {
+    if (document.title !== to.meta.title) {
+      document.title = to.meta.title
+    }
   }
   NProgress.start()
   next()
